@@ -9,6 +9,9 @@ import CodeLabPage from './pages/CodeLabPage';
 import CodeTracePage from './pages/CodeTracePage';
 import PredictComparePage from './pages/PredictComparePage';
 import PracticePage from './pages/PracticePage';
+import AssessmentCenterPage from './pages/AssessmentCenterPage';
+import AssessmentTakePage from './pages/AssessmentTakePage';
+import AssessmentResultPage from './pages/AssessmentResultPage';
 
 function PlaceholderPage({ title, description, linkTo, linkText, icon = 'bi-cone-striped' }) {
   return (
@@ -44,7 +47,9 @@ export default function App() {
           <Route path="/codetrace" element={<CodeTracePage />} />
           <Route path="/practice" element={<PracticePage />} />
           <Route path="/predict" element={<PredictComparePage />} />
-          <Route path="/assessment" element={<PlaceholderPage title="Assessment Centre" description="Timed and untimed rigorous assessments with server-side grading." linkTo="/dashboard" linkText="Go to Dashboard" icon="bi-patch-check" />} />
+          <Route path="/assessment" element={<AssessmentCenterPage />} />
+          <Route path="/assessment/:id/take" element={<AssessmentTakePage />} />
+          <Route path="/assessment/:id/result" element={<AssessmentResultPage />} />
           <Route path="/projects" element={<PlaceholderPage title="My Saved Projects" description="Saved HTML/CSS/JS experiments with revision history and diff viewer." linkTo="/codelab" linkText="Create in CodeLab" icon="bi-folder2-open" />} />
           <Route path="*" element={<PlaceholderPage title="404 — Page Not Found" description="The page you requested could not be found." linkTo="/" linkText="Back to Home" icon="bi-exclamation-triangle" />} />
         </Routes>

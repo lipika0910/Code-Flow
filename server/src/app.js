@@ -42,6 +42,10 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Assessment routes
+import assessmentRoutes from './routes/assessment.routes.js';
+app.use('/api/assessments', assessmentRoutes);
+
 // Production SPA static file serving
 const clientDistPath = path.resolve(__dirname, '../../client/dist');
 if (fs.existsSync(clientDistPath)) {
