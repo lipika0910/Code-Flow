@@ -28,6 +28,10 @@ app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
 app.use(cookieParser(process.env.COOKIE_SECRET || 'codeflow_cookie_secret_dev'));
 
+// Global authentication extractor
+import { authenticate } from './middleware/auth.js';
+app.use(authenticate);
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
@@ -42,9 +46,22 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Assessment routes
+// Mount API routes
+import authRoutes from './routes/auth.routes.js';
+import topicRoutes from './routes/topic.routes.js';
+import lessonRoutes from './routes/lesson.routes.js';
+import projectRoutes from './routes/project.routes.js';
+import progressRoutes from './routes/progress.routes.js';
 import assessmentRoutes from './routes/assessment.routes.js';
+import adminRoutes from './routes/admin.routes.js';
+
+app.use('/api/auth', authRoutes);
+app.use('/api/topics', topicRoutes);
+app.use('/api/lessons', lessonRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/progress', progressRoutes);
 app.use('/api/assessments', assessmentRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Production SPA static file serving
 const clientDistPath = path.resolve(__dirname, '../../client/dist');

@@ -244,46 +244,65 @@ export default function DashboardPage() {
 
             {/* Quick module links */}
             <h3 className="h6 fw-bold mb-2 text-muted text-uppercase" style={{ fontSize: '0.75rem', letterSpacing: '0.05em' }}>
-              Quick Workspaces
+              Quick Workspaces & Diagnostics
             </h3>
             <div className="row g-2">
-              <div className="col-6">
+              <div className="col-6 col-sm-4">
                 <Link to="/codelab" className="cf-card p-2 text-decoration-none d-flex align-items-center gap-2 h-100" style={{ background: 'var(--bg-app)' }}>
                   <i className="bi bi-code-square fs-5" style={{ color: 'var(--accent-teal)' }}></i>
                   <div>
-                    <div className="fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>CodeLab IDE</div>
-                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Freeform Sandbox</div>
+                    <div className="fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>CodeLab</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Freeform IDE</div>
                   </div>
                 </Link>
               </div>
-              <div className="col-6">
+              <div className="col-6 col-sm-4">
                 <Link to="/codetrace" className="cf-card p-2 text-decoration-none d-flex align-items-center gap-2 h-100" style={{ background: 'var(--bg-app)' }}>
                   <i className="bi bi-diagram-3 fs-5" style={{ color: 'var(--accent-violet)' }}></i>
                   <div>
                     <div className="fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>CodeTrace</div>
-                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Step-by-step AST</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>AST Stepper</div>
                   </div>
                 </Link>
               </div>
-              <div className="col-6">
-                <Link to="/predict" className="cf-card p-2 text-decoration-none d-flex align-items-center gap-2 h-100" style={{ background: 'var(--bg-app)' }}>
-                  <i className="bi bi-bullseye fs-5 text-warning"></i>
+              <div className="col-6 col-sm-4">
+                <Link to="/debug" className="cf-card p-2 text-decoration-none d-flex align-items-center gap-2 h-100" style={{ background: 'var(--bg-app)' }}>
+                  <i className="bi bi-bug fs-5 text-warning"></i>
                   <div>
-                    <div className="fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>Predict Output</div>
-                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>10 Misconceptions</div>
+                    <div className="fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>Debug Lab</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Staged Hints</div>
                   </div>
                 </Link>
               </div>
-              <div className="col-6">
-                <Link to="/assessment" className="cf-card p-2 text-decoration-none d-flex align-items-center gap-2 h-100" style={{ background: 'var(--bg-app)' }}>
-                  <i className="bi bi-patch-check fs-5 text-success"></i>
+              <div className="col-6 col-sm-4">
+                <Link to="/dom-explorer" className="cf-card p-2 text-decoration-none d-flex align-items-center gap-2 h-100" style={{ background: 'var(--bg-app)' }}>
+                  <i className="bi bi-diagram-2 fs-5" style={{ color: '#0dcaf0' }}></i>
                   <div>
-                    <div className="fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>Assessments</div>
-                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Server Graded</div>
+                    <div className="fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>DOM Tree</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Live Inspector</div>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-6 col-sm-4">
+                <Link to="/leaderboard" className="cf-card p-2 text-decoration-none d-flex align-items-center gap-2 h-100" style={{ background: 'var(--bg-app)' }}>
+                  <i className="bi bi-trophy fs-5 text-warning"></i>
+                  <div>
+                    <div className="fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>Leaderboard</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>XP Standings</div>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-6 col-sm-4">
+                <Link to="/analytics" className="cf-card p-2 text-decoration-none d-flex align-items-center gap-2 h-100" style={{ background: 'var(--bg-app)' }}>
+                  <i className="bi bi-graph-up fs-5 text-success"></i>
+                  <div>
+                    <div className="fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>Analytics</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Report & Charts</div>
                   </div>
                 </Link>
               </div>
             </div>
+
           </div>
         </div>
 

@@ -13,11 +13,20 @@ export default function Navbar() {
     { to: '/learn', label: 'Learn', icon: 'bi-journal-code' },
     { to: '/codelab', label: 'CodeLab', icon: 'bi-code-square' },
     { to: '/codetrace', label: 'CodeTrace', icon: 'bi-diagram-3' },
+    { to: '/debug', label: 'Debug Lab', icon: 'bi-bug' },
+    { to: '/dom-explorer', label: 'DOM', icon: 'bi-diagram-2' },
     { to: '/practice', label: 'Practice', icon: 'bi-lightning-charge' },
+    { to: '/predict', label: 'Predict', icon: 'bi-arrow-left-right' },
     { to: '/assessment', label: 'Assessments', icon: 'bi-patch-check' },
     { to: '/projects', label: 'Projects', icon: 'bi-folder2-open' },
+    { to: '/leaderboard', label: 'Ranks', icon: 'bi-trophy' },
+    { to: '/analytics', label: 'Analytics', icon: 'bi-graph-up' },
     { to: '/dashboard', label: 'Dashboard', icon: 'bi-speedometer2' }
   ];
+
+  if (user.role === 'admin') {
+    navLinks.push({ to: '/admin', label: 'Admin', icon: 'bi-shield-lock' });
+  }
 
   return (
     <nav className="navbar navbar-expand-lg border-bottom sticky-top py-2" style={{ borderColor: 'var(--border-subtle)', background: 'var(--bg-surface)' }}>

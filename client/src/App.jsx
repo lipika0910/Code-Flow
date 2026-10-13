@@ -12,21 +12,29 @@ import PracticePage from './pages/PracticePage';
 import AssessmentCenterPage from './pages/AssessmentCenterPage';
 import AssessmentTakePage from './pages/AssessmentTakePage';
 import AssessmentResultPage from './pages/AssessmentResultPage';
+import LearnPage from './pages/LearnPage';
+import LessonDetailPage from './pages/LessonDetailPage';
+import ProjectsPage from './pages/ProjectsPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import DebuggingLabPage from './pages/DebuggingLabPage';
+import DomExplorerPage from './pages/DomExplorerPage';
+import LeaderboardPage from './pages/LeaderboardPage';
+import AnalyticsPage from './pages/AnalyticsPage';
+import AdminPage from './pages/AdminPage';
 
-function PlaceholderPage({ title, description, linkTo, linkText, icon = 'bi-cone-striped' }) {
+function NotFoundPage() {
   return (
     <div className="container py-5">
       <div className="cf-card mx-auto text-center py-5 px-4" style={{ maxWidth: '600px' }}>
         <div className="d-inline-flex p-3 rounded-circle mb-3" style={{ background: 'var(--bg-surface-elevated)', border: '1px solid var(--border-subtle)' }}>
-          <i className={`bi ${icon} fs-2`} style={{ color: 'var(--accent-violet)' }}></i>
+          <i className="bi bi-exclamation-triangle fs-2" style={{ color: 'var(--accent-violet)' }}></i>
         </div>
-        <h2 className="h4 fw-bold mb-2" style={{ color: 'var(--text-primary)' }}>{title}</h2>
-        <p className="mb-4" style={{ color: 'var(--text-secondary)' }}>{description}</p>
-        {linkTo && (
-          <Link to={linkTo} className="cf-btn-primary">
-            {linkText || 'Continue'}
-          </Link>
-        )}
+        <h2 className="h4 fw-bold mb-2" style={{ color: 'var(--text-primary)' }}>404 — Page Not Found</h2>
+        <p className="mb-4" style={{ color: 'var(--text-secondary)' }}>The page you requested could not be found.</p>
+        <Link to="/" className="cf-btn-primary">
+          Back to Home
+        </Link>
       </div>
     </div>
   );
@@ -41,20 +49,28 @@ export default function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/learn" element={<PlaceholderPage title="Interactive Lessons" description="Structured curriculum for HTML5, CSS3, JavaScript Core, DOM and APIs." linkTo="/codelab" linkText="Open CodeLab" icon="bi-journal-code" />} />
-          <Route path="/learn/:slug" element={<PlaceholderPage title="Lesson Detail" description="Interactive lesson workspace with guided examples and knowledge checks." linkTo="/learn" linkText="Back to Syllabus" icon="bi-journal-text" />} />
+          <Route path="/learn" element={<LearnPage />} />
+          <Route path="/learn/:slug" element={<LessonDetailPage />} />
           <Route path="/codelab" element={<CodeLabPage />} />
           <Route path="/codetrace" element={<CodeTracePage />} />
+          <Route path="/debug" element={<DebuggingLabPage />} />
+          <Route path="/dom-explorer" element={<DomExplorerPage />} />
           <Route path="/practice" element={<PracticePage />} />
           <Route path="/predict" element={<PredictComparePage />} />
           <Route path="/assessment" element={<AssessmentCenterPage />} />
           <Route path="/assessment/:id/take" element={<AssessmentTakePage />} />
           <Route path="/assessment/:id/result" element={<AssessmentResultPage />} />
-          <Route path="/projects" element={<PlaceholderPage title="My Saved Projects" description="Saved HTML/CSS/JS experiments with revision history and diff viewer." linkTo="/codelab" linkText="Create in CodeLab" icon="bi-folder2-open" />} />
-          <Route path="*" element={<PlaceholderPage title="404 — Page Not Found" description="The page you requested could not be found." linkTo="/" linkText="Back to Home" icon="bi-exclamation-triangle" />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
     </div>
   );
 }
+

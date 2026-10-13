@@ -41,16 +41,22 @@ export default function LandingPage() {
       link: '/codetrace'
     },
     {
+      title: 'Practice & Debugging Lab',
+      icon: 'bi-bug',
+      desc: 'Diagnose syntax, runtime, and logic bugs with staged hints, diff viewer, and automated test verification.',
+      link: '/debug'
+    },
+    {
+      title: 'Live DOM Explorer',
+      icon: 'bi-diagram-2',
+      desc: 'Inspect tree hierarchies, mutate attributes and inline styles in real-time, and dispatch simulated DOM events.',
+      link: '/dom-explorer'
+    },
+    {
       title: 'Predict → Execute → Compare',
       icon: 'bi-bullseye',
       desc: 'Test your mental model against classic JavaScript quirks: type coercion, closure loops, hoisting, and object references.',
       link: '/predict'
-    },
-    {
-      title: 'Practice Arena',
-      icon: 'bi-lightning-charge',
-      desc: '30+ server-graded challenges: find-the-bug, fill-the-blank, code completion, and statement rearrangement with tiered hints.',
-      link: '/practice'
     },
     {
       title: 'Assessment Centre',
@@ -64,6 +70,7 @@ export default function LandingPage() {
       desc: 'Track daily streaks, XP accumulation, completion milestones, and topic-specific accuracy without fake data.',
       link: '/dashboard'
     }
+
   ];
 
   return (
