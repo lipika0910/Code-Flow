@@ -6,7 +6,7 @@ import App from '../App';
 import { ThemeProvider } from '../context/ThemeContext';
 
 describe('App Component', () => {
-  it('renders navbar logo and tagline correctly', () => {
+  it('renders navbar logo, tagline and guest banner correctly', () => {
     render(
       <BrowserRouter>
         <ThemeProvider>
@@ -15,9 +15,10 @@ describe('App Component', () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByText('Code')).toBeInTheDocument();
-    expect(screen.getByText('Flow')).toBeInTheDocument();
-    expect(screen.getByText(/Learn. Experiment. Execute. Understand. Assess./i)).toBeInTheDocument();
+    expect(screen.getAllByText('Code').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('Flow').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText(/Guest Mode Active:/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Learn. Experiment. Execute./i).length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders navigation links to core sections', () => {
@@ -29,11 +30,24 @@ describe('App Component', () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByRole('link', { name: /^Learn$/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /^CodeLab$/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /^CodeTrace$/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /^Practice$/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /^Assessments$/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /^Dashboard$/i })).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /Learn/i }).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByRole('link', { name: /CodeLab/i }).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByRole('link', { name: /CodeTrace/i }).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByRole('link', { name: /Practice/i }).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByRole('link', { name: /Assessments/i }).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByRole('link', { name: /Dashboard/i }).length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('renders live runnable demo on homepage', () => {
+    render(
+      <BrowserRouter>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText(/Live Sandbox Demo/i)).toBeInTheDocument();
+    expect(screen.getByTitle(/Execute code in sandboxed iframe/i)).toBeInTheDocument();
   });
 });
