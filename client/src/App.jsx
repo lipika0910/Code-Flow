@@ -6,6 +6,9 @@ import GuestBanner from './components/common/GuestBanner';
 import LandingPage from './pages/LandingPage';
 import DashboardPage from './pages/DashboardPage';
 import CodeLabPage from './pages/CodeLabPage';
+import CodeTracePage from './pages/CodeTracePage';
+import PredictComparePage from './pages/PredictComparePage';
+import PracticePage from './pages/PracticePage';
 
 function PlaceholderPage({ title, description, linkTo, linkText, icon = 'bi-cone-striped' }) {
   return (
@@ -38,9 +41,9 @@ export default function App() {
           <Route path="/learn" element={<PlaceholderPage title="Interactive Lessons" description="Structured curriculum for HTML5, CSS3, JavaScript Core, DOM and APIs." linkTo="/codelab" linkText="Open CodeLab" icon="bi-journal-code" />} />
           <Route path="/learn/:slug" element={<PlaceholderPage title="Lesson Detail" description="Interactive lesson workspace with guided examples and knowledge checks." linkTo="/learn" linkText="Back to Syllabus" icon="bi-journal-text" />} />
           <Route path="/codelab" element={<CodeLabPage />} />
-          <Route path="/codetrace" element={<PlaceholderPage title="CodeTrace AST Visualizer" description="Guided step-by-step AST execution with variable watch and call stack." linkTo="/practice" linkText="Go to Practice" icon="bi-diagram-3" />} />
-          <Route path="/practice" element={<PlaceholderPage title="Practice Arena" description="Targeted bug hunting, code completion, and statement rearrangement drills." linkTo="/assessment" linkText="Go to Assessments" icon="bi-lightning-charge" />} />
-          <Route path="/predict" element={<PlaceholderPage title="Predict → Execute → Compare" description="10 Classic JavaScript mental models: predict output then verify runtime." linkTo="/practice" linkText="Try Practice" icon="bi-bullseye" />} />
+          <Route path="/codetrace" element={<CodeTracePage />} />
+          <Route path="/practice" element={<PracticePage />} />
+          <Route path="/predict" element={<PredictComparePage />} />
           <Route path="/assessment" element={<PlaceholderPage title="Assessment Centre" description="Timed and untimed rigorous assessments with server-side grading." linkTo="/dashboard" linkText="Go to Dashboard" icon="bi-patch-check" />} />
           <Route path="/projects" element={<PlaceholderPage title="My Saved Projects" description="Saved HTML/CSS/JS experiments with revision history and diff viewer." linkTo="/codelab" linkText="Create in CodeLab" icon="bi-folder2-open" />} />
           <Route path="*" element={<PlaceholderPage title="404 — Page Not Found" description="The page you requested could not be found." linkTo="/" linkText="Back to Home" icon="bi-exclamation-triangle" />} />
