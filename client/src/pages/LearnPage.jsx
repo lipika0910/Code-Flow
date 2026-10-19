@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { storage } from '../services/storage';
+import { FALLBACK_TOPICS, FALLBACK_LESSONS } from '../services/curriculumData';
 
 export default function LearnPage() {
   const [topics, setTopics] = useState([]);
@@ -21,9 +21,13 @@ export default function LearnPage() {
         if (topJson.ok && lesJson.ok) {
           setTopics(topJson.data);
           setLessons(lesJson.data);
+        } else {
+          setTopics(FALLBACK_TOPICS);
+          setLessons(FALLBACK_LESSONS);
         }
       } catch (err) {
-        console.error('Failed to load curriculum from API:', err);
+        setTopics(FALLBACK_TOPICS);
+        setLessons(FALLBACK_LESSONS);
       } finally {
         setLoading(false);
       }

@@ -4,6 +4,7 @@ import CodeMirrorEditor from '../components/editor/CodeMirrorEditor';
 import IframePreview from '../components/editor/IframePreview';
 import OutputConsole from '../components/editor/OutputConsole';
 import { storage } from '../services/storage';
+import { FALLBACK_LESSONS } from '../services/curriculumData';
 
 export default function LessonDetailPage() {
   const { slug } = useParams();
@@ -37,9 +38,23 @@ export default function LessonDetailPage() {
           setEditableCode(json.data.runnable_code || '');
           const completedList = storage.getLessonProgress();
           setIsCompleted(completedList.includes(json.data.id) || json.data.is_completed);
+        } else {
+          const fallback = FALLBACK_LESSONS.find(l => l.slug === slug || l.id === slug);
+          if (fallback) {
+            setLesson(fallback);
+            setEditableCode(fallback.runnable_code || '');
+            const completedList = storage.getLessonProgress();
+            setIsCompleted(completedList.includes(fallback.id));
+          }
         }
       } catch (err) {
-        console.error('Error fetching lesson:', err);
+        const fallback = FALLBACK_LESSONS.find(l => l.slug === slug || l.id === slug);
+        if (fallback) {
+          setLesson(fallback);
+          setEditableCode(fallback.runnable_code || '');
+          const completedList = storage.getLessonProgress();
+          setIsCompleted(completedList.includes(fallback.id));
+        }
       } finally {
         setLoading(false);
       }
